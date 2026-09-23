@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BARSOI PUBLIC SCHOOL</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background-color: #f0f0f0; color: #333; }
+    
+    /* Top Bar */
+    .top-bar { background-color: #6b1d2f; color: #fff; padding: 8px 20px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+    .top-bar .contact-info span { margin-left: 15px; }
+
+    /* Header */
+    header { background-color: #6b1d2f; padding: 20px; text-align: center; color: white; border-top: 1px solid #8c283f; }
+    header h1 { font-size: 32px; letter-spacing: 1px; }
+
+    /* Navigation */
+    nav { background-color: #f4c463; display: flex; justify-content: center; flex-wrap: wrap; }
+    nav a { color: #333; padding: 12px 20px; text-decoration: none; font-weight: bold; font-size: 14px; }
+    nav a:hover { background-color: #e5b34f; }
+
+    /* Main Container Layout */
+    .container { max-width: 1200px; margin: 20px auto; padding: 0 10px; display: grid; grid-template-columns: 280px 1fr; gap: 20px; }
+
+    /* Left Sidebar */
+    .sidebar .card { background: #fff; border-radius: 4px; margin-bottom: 20px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .card-header { background-color: #6b1d2f; color: white; padding: 10px 15px; font-weight: bold; text-align: center; }
+    .card-body { padding: 15px; font-size: 13px; line-height: 1.5; }
+    
+    .quick-links a { display: block; background: #fff; padding: 12px 15px; margin-bottom: 10px; border: 1px solid #ddd; text-decoration: none; color: #6b1d2f; font-weight: bold; border-radius: 4px; text-align: center; }
+    .quick-links a:hover { background: #f9f9f9; }
+
+    /* Form Styling */
+    .form-group { margin-bottom: 10px; }
+    .form-group input, .form-group textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 3px; font-size: 12px; }
+    .btn-submit { background-color: #f4c463; border: none; padding: 8px 15px; font-weight: bold; cursor: pointer; border-radius: 3px; width: 100%; }
+
+    /* Main Content */
+    .main-content { display: flex; flex-direction: column; gap: 20px; }
+    
+    /* Hero Banner */
+    .hero-banner { position: relative; background: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .hero-banner img { width: 100%; height: 350px; object-fit: cover; display: block; }
+    .hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); color: #fff; padding: 15px; }
+    .hero-overlay h2 { color: #f4c463; font-size: 18px; margin-bottom: 5px; }
+
+    /* Tabs Section */
+    .tabs-container { background: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .tabs-header { display: flex; background: #6b1d2f; }
+    .tab-btn { flex: 1; padding: 10px; color: white; background: none; border: none; cursor: pointer; font-weight: bold; text-align: center; }
+    .tab-btn.active { background: #fff; color: #6b1d2f; }
+    .tab-content { padding: 20px; font-size: 14px; line-height: 1.6; }
+
+    /* Grid Sections */
+    .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .list-item { display: flex; gap: 15px; margin-bottom: 15px; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+    .list-item img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+    .list-item-content h4 { font-size: 14px; color: #333; }
+    .list-item-content p { font-size: 12px; color: #666; }
+
+    /* Footer Sections */
+    .bottom-bars { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    @media (max-width: 768px) {
+      .container { grid-template-columns: 1fr; }
+      .two-col-grid, .bottom-bars { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Contact Bar -->
+  <div class="top-bar">
+    <div>Welcome to Barsoi Public School</div>
+    <div class="contact-info">
+      <span>📞 +91 9471685668</span>
+      <span>✉️ barsoipublicschool125@gamil.com</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h1>BARSOI PUBLIC SCHOOL</h1>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Academics</a>
+    <a href="#">Admission</a>
+    <a href="#">Staff</a>
+    <a href="#">Career</a>
+    <a href="#">Gallery</a>
+    <a href="#">Contact Us</a>
+    <a href="admin.html" style="background: #6b1d2f; color: white;">Admin Portal</a>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+
+    <!-- Left Sidebar -->
+    <div class="sidebar">
+      <div class="card">
+        <div class="card-header">Important News</div>
+        <div class="card-body">
+          <p>Online admission forms are now available on our website. Click admission link and fill all details.</p>
+          <br>
+          <p>Helpline: +91 9471685668 (10:00 AM to 4:00 PM)</p>
+        </div>
+      </div>
+
+      <div class="quick-links">
+        <a href="#">🎓 Student Corner</a>
+        <a href="#">📝 Admission</a>
+        <a href="#">📊 Result</a>
+      </div>
+
+      <div class="card">
+        <div class="card-header">Enquiry Form</div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <input type="text" placeholder="Full Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" placeholder="Mobile Number" required>
+            </div>
+            <div class="form-group">
+              <textarea rows="3" placeholder="Message"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+
+      <!-- Hero Banner Image -->
+      <div class="hero-banner">
+        <!-- Replace DRIVE_URL below with your Google Drive Link or Direct Image Link -->
+        <img id="mainBannerImg" src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop" alt="School Banner">
+        <div class="hero-overlay">
+          <h2>WELCOME TO SCHOOL</h2>
+          <p>Learning is a treasure that will follow its owner everywhere.</p>
+        </div>
+      </div>
+
+      <!-- About School Tabs -->
+      <div class="tabs-container">
+        <div class="tabs-header">
+          <button class="tab-btn active">About School</button>
+          <button class="tab-btn">Vision/Mission</button>
+          <button class="tab-btn">Director's Desk</button>
+          <button class="tab-btn">Principal Desk</button>
+        </div>
+        <div class="tab-content">
+          <p>Barsoi Public School is committed to providing quality education and overall development of students. Our school is managed with excellence to achieve academic brilliant performance in the region.</p>
+        </div>
+      </div>
+
+      <!-- Results & Events Section -->
+      <div class="two-col-grid">
+        <div class="card">
+          <div class="card-header">Results / Toppers</div>
+          <div class="card-body">
+            <div class="list-item">
+              <img src="https://via.placeholder.com/50" alt="Student">
+              <div class="list-item-content">
+                <h4>Ragini E</h4>
+                <p>90% - 1st Rank</p>
+              </div>
+            </div>
+            <div class="list-item">
+              <img src="https://via.placeholder.com/50" alt="Student">
+              <div class="list-item-content">
+                <h4>Neha J</h4>
+                <p>88% - 2nd Rank</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">Our Events</div>
+          <div class="card-body">
+            <div class="list-item-content" style="margin-bottom: 10px;">
+              <h4>🏆 Games & Sports</h4>
+              <p>Regular activities developing healthy body, strength, and better coordination.</p>
+            </div>
+            <div class="list-item-content">
+              <h4>🎨 Co-Curricular</h4>
+              <p>Activities designed to help students develop problem solving skills.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-bars">
+        <div class="card">
+          <div class="card-header">Parents Speak</div>
+          <div class="card-body">
+            <p>Great environment and quality education provided by school teachers.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">Facilities</div>
+          <div class="card-body">
+            <p>Smart Classes, Science Labs, Computer Lab, Library & Sports Ground.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Script to support Google Drive Image links -->
+  <script>
+    function parseDriveUrl(url) {
+      const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+      if (match && match[1]) {
+        return 'https://drive.google.com/thumbnail?sz=w1000&id=' + match[1];
+      }
+      return url;
+    }
+
+    // Example: If you pass a Google Drive URL, it converts automatically
+    const bannerImg = document.getElementById('mainBannerImg');
+    bannerImg.src = parseDriveUrl(bannerImg.src);
+  </script>
+</body>
+</html>
