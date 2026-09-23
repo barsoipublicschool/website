@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - BARSOI PUBLIC SCHOOL</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background-color: #f4f6f9; color: #333; }
+    
+    /* Header */
+    .header { background: #6b1d2f; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    .header h2 { font-size: 22px; }
+    .header a { color: #f4c463; text-decoration: none; font-weight: bold; background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 4px; }
+    .header a:hover { background: rgba(255,255,255,0.2); }
+
+    /* Layout */
+    .container { max-width: 1000px; margin: 30px auto; padding: 0 15px; }
+    
+    .card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); margin-bottom: 25px; }
+    .card h3 { border-bottom: 2px solid #6b1d2f; padding-bottom: 8px; color: #6b1d2f; margin-bottom: 20px; font-size: 18px; }
+
+    /* Form Fields */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .full-width { grid-column: span 2; }
+    
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; font-weight: bold; margin-bottom: 6px; font-size: 13px; color: #555; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+    .form-group textarea { resize: vertical; }
+
+    /* Buttons */
+    .btn-container { text-align: right; margin-top: 10px; }
+    .btn { background: #6b1d2f; color: white; padding: 12px 25px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
+    .btn:hover { background: #521423; }
+    .btn-reset { background: #777; margin-right: 10px; }
+    .btn-reset:hover { background: #555; }
+
+    /* Status Alert */
+    .alert { display: none; padding: 12px; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 4px; margin-bottom: 20px; font-weight: bold; text-align: center; }
+
+    @media (max-width: 768px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .full-width { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h2>Barsoi Public School - Admin Panel</h2>
+    <a href="index.html" target="_blank">👁️ Preview Website</a>
+  </div>
+
+  <div class="container">
+
+    <div id="alertMsg" class="alert">Website details updated successfully!</div>
+
+    <form id="adminForm">
+
+      <!-- 1. General Info & Contact Settings -->
+      <div class="card">
+        <h3>1. Basic School Info & Contact Details</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>School Name:</label>
+            <input type="text" id="schoolName" value="BARSOI PUBLIC SCHOOL">
+          </div>
+          <div class="form-group">
+            <label>Top Bar Welcome Message:</label>
+            <input type="text" id="topWelcomeMsg" value="Welcome to Barsoi Public School">
+          </div>
+          <div class="form-group">
+            <label>Phone Number (Mobile):</label>
+            <input type="text" id="phoneNo" value="9471685668">
+          </div>
+          <div class="form-group">
+            <label>Email Address:</label>
+            <input type="email" id="emailAddr" value="barsoipublicschool125@gamil.com">
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Main Hero Banner Section -->
+      <div class="card">
+        <h3>2. Main Banner & Hero Image Settings</h3>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label>Main Banner Image (Google Drive URL or Direct Link):</label>
+            <input type="text" id="bannerUrl" placeholder="Paste Google Drive share link here...">
+          </div>
+          <div class="form-group">
+            <label>Banner Overlay Title:</label>
+            <input type="text" id="bannerTitle" value="WELCOME TO SCHOOL">
+          </div>
+          <div class="form-group">
+            <label>Banner Subtitle / Tagline:</label>
+            <input type="text" id="bannerSubtitle" value="Learning is a treasure that will follow its owner everywhere.">
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. News & Announcements -->
+      <div class="card">
+        <h3>3. News & Announcements Panel</h3>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label>Important News / Latest Announcement:</label>
+            <textarea id="newsText" rows="3">Online admission forms are now available on our website. Click admission link and fill all details.</textarea>
+          </div>
+          <div class="form-group full-width">
+            <label>Helpline / Working Hours Info:</label>
+            <input type="text" id="helplineInfo" value="Helpline: +91 9471685668 (10:00 AM to 4:00 PM)">
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Desks / Messages Tabs -->
+      <div class="card">
+        <h3>4. School Messages & Desks</h3>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label>About School Description:</label>
+            <textarea id="aboutSchool" rows="3">Barsoi Public School is committed to providing quality education and overall development of students.</textarea>
+          </div>
+          <div class="form-group full-width">
+            <label>Vision & Mission:</label>
+            <textarea id="visionMission" rows="3">To build well-rounded, confident and responsible global citizens.</textarea>
+          </div>
+          <div class="form-group full-width">
+            <label>Director's Message:</label>
+            <textarea id="directorDesk" rows="3">Welcome to our institution. We focus on academic and personal growth.</textarea>
+          </div>
+          <div class="form-group full-width">
+            <label>Principal's Message:</label>
+            <textarea id="principalDesk" rows="3">Education is the most powerful weapon which you can use to change the world.</textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Student Results / Toppers -->
+      <div class="card">
+        <h3>5. Toppers / Student Results</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Topper 1 - Name:</label>
+            <input type="text" id="top1Name" value="Ragini E">
+          </div>
+          <div class="form-group">
+            <label>Topper 1 - Marks / Percentage & Rank:</label>
+            <input type="text" id="top1Score" value="90% - 1st Rank">
+          </div>
+          <div class="form-group">
+            <label>Topper 2 - Name:</label>
+            <input type="text" id="top2Name" value="Neha J">
+          </div>
+          <div class="form-group">
+            <label>Topper 2 - Marks / Percentage & Rank:</label>
+            <input type="text" id="top2Score" value="88% - 2nd Rank">
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Facilities & Events -->
+      <div class="card">
+        <h3>6. Facilities & Events Update</h3>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label>Parents Review / Feedback:</label>
+            <input type="text" id="parentsSpeak" value="Great environment and quality education provided by school teachers.">
+          </div>
+          <div class="form-group full-width">
+            <label>Facilities List:</label>
+            <input type="text" id="facilities" value="Smart Classes, Science Labs, Computer Lab, Library & Sports Ground.">
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Buttons -->
+      <div class="btn-container">
+        <button type="button" class="btn btn-reset" onclick="loadSavedData()">Reset / Load Last Saved</button>
+        <button type="button" class="btn" onclick="saveData()">💾 Save All Changes</button>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    // Save form data to LocalStorage
+    function saveData() {
+      const formElements = document.querySelectorAll('#adminForm input, #adminForm textarea');
+      const schoolData = {};
+
+      formElements.forEach(item => {
+        schoolData[item.id] = item.value;
+      });
+
+      localStorage.setItem('bps_school_data', JSON.stringify(schoolData));
+
+      const alertBox = document.getElementById('alertMsg');
+      alertBox.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      setTimeout(() => {
+        alertBox.style.display = 'none';
+      }, 3000);
+    }
+
+    // Load saved data when admin page opens
+    function loadSavedData() {
+      const savedData = localStorage.getItem('bps_school_data');
+      if (savedData) {
+        const schoolData = JSON.parse(savedData);
+        Object.keys(schoolData).forEach(key => {
+          const field = document.getElementById(key);
+          if (field) {
+            field.value = schoolData[key];
+          }
+        });
+      }
+    }
+
+    // Run automatically on load
+    window.onload = loadSavedData;
+  </script>
+</body>
+</html>
