@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BARSOI PUBLIC SCHOOL</title>
+  <title id="siteTitle">BARSOI PUBLIC SCHOOL</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
     body { background-color: #f0f0f0; color: #333; }
@@ -74,16 +74,16 @@
 
   <!-- Top Contact Bar -->
   <div class="top-bar">
-    <div>Welcome to Barsoi Public School</div>
+    <div id="displayTopWelcome">Welcome to Barsoi Public School</div>
     <div class="contact-info">
-      <span>📞 +91 9471685668</span>
-      <span>✉️ barsoipublicschool125@gamil.com</span>
+      <span id="displayPhone">📞 +91 9471685668</span>
+      <span id="displayEmail">✉️ barsoipublicschool125@gamil.com</span>
     </div>
   </div>
 
   <!-- Header -->
   <header>
-    <h1>BARSOI PUBLIC SCHOOL</h1>
+    <h1 id="displaySchoolName">BARSOI PUBLIC SCHOOL</h1>
   </header>
 
   <!-- Navigation Menu -->
@@ -107,9 +107,9 @@
       <div class="card">
         <div class="card-header">Important News</div>
         <div class="card-body">
-          <p>Online admission forms are now available on our website. Click admission link and fill all details.</p>
+          <p id="displayNews">Online admission forms are now available on our website. Click admission link and fill all details.</p>
           <br>
-          <p>Helpline: +91 9471685668 (10:00 AM to 4:00 PM)</p>
+          <p id="displayHelpline">Helpline: +91 9471685668 (10:00 AM to 4:00 PM)</p>
         </div>
       </div>
 
@@ -146,24 +146,23 @@
 
       <!-- Hero Banner Image -->
       <div class="hero-banner">
-        <!-- Replace DRIVE_URL below with your Google Drive Link or Direct Image Link -->
         <img id="mainBannerImg" src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop" alt="School Banner">
         <div class="hero-overlay">
-          <h2>WELCOME TO SCHOOL</h2>
-          <p>Learning is a treasure that will follow its owner everywhere.</p>
+          <h2 id="displayBannerTitle">WELCOME TO SCHOOL</h2>
+          <p id="displayBannerSubtitle">Learning is a treasure that will follow its owner everywhere.</p>
         </div>
       </div>
 
       <!-- About School Tabs -->
       <div class="tabs-container">
         <div class="tabs-header">
-          <button class="tab-btn active">About School</button>
-          <button class="tab-btn">Vision/Mission</button>
-          <button class="tab-btn">Director's Desk</button>
-          <button class="tab-btn">Principal Desk</button>
+          <button class="tab-btn active" onclick="switchTab('about')">About School</button>
+          <button class="tab-btn" onclick="switchTab('vision')">Vision/Mission</button>
+          <button class="tab-btn" onclick="switchTab('director')">Director's Desk</button>
+          <button class="tab-btn" onclick="switchTab('principal')">Principal Desk</button>
         </div>
         <div class="tab-content">
-          <p>Barsoi Public School is committed to providing quality education and overall development of students. Our school is managed with excellence to achieve academic brilliant performance in the region.</p>
+          <p id="tabContentBody">Barsoi Public School is committed to providing quality education and overall development of students. Our school is managed with excellence to achieve academic brilliant performance in the region.</p>
         </div>
       </div>
 
@@ -175,15 +174,15 @@
             <div class="list-item">
               <img src="https://via.placeholder.com/50" alt="Student">
               <div class="list-item-content">
-                <h4>Ragini E</h4>
-                <p>90% - 1st Rank</p>
+                <h4 id="displayTop1Name">Ragini E</h4>
+                <p id="displayTop1Score">90% - 1st Rank</p>
               </div>
             </div>
             <div class="list-item">
               <img src="https://via.placeholder.com/50" alt="Student">
               <div class="list-item-content">
-                <h4>Neha J</h4>
-                <p>88% - 2nd Rank</p>
+                <h4 id="displayTop2Name">Neha J</h4>
+                <p id="displayTop2Score">88% - 2nd Rank</p>
               </div>
             </div>
           </div>
@@ -208,13 +207,13 @@
         <div class="card">
           <div class="card-header">Parents Speak</div>
           <div class="card-body">
-            <p>Great environment and quality education provided by school teachers.</p>
+            <p id="displayParentsSpeak">Great environment and quality education provided by school teachers.</p>
           </div>
         </div>
         <div class="card">
           <div class="card-header">Facilities</div>
           <div class="card-body">
-            <p>Smart Classes, Science Labs, Computer Lab, Library & Sports Ground.</p>
+            <p id="displayFacilities">Smart Classes, Science Labs, Computer Lab, Library & Sports Ground.</p>
           </div>
         </div>
       </div>
@@ -222,9 +221,17 @@
     </div>
   </div>
 
-  <!-- Script to support Google Drive Image links -->
+  <!-- Dynamic Script and Admin Data Sync -->
   <script>
+    let tabTexts = {
+      about: "Barsoi Public School is committed to providing quality education and overall development of students.",
+      vision: "To build well-rounded, confident and responsible global citizens.",
+      director: "Welcome to our institution. We focus on academic and personal growth.",
+      principal: "Education is the most powerful weapon which you can use to change the world."
+    };
+
     function parseDriveUrl(url) {
+      if (!url) return '';
       const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
       if (match && match[1]) {
         return 'https://drive.google.com/thumbnail?sz=w1000&id=' + match[1];
@@ -232,9 +239,53 @@
       return url;
     }
 
-    // Example: If you pass a Google Drive URL, it converts automatically
-    const bannerImg = document.getElementById('mainBannerImg');
-    bannerImg.src = parseDriveUrl(bannerImg.src);
+    function switchTab(type) {
+      const btns = document.querySelectorAll('.tab-btn');
+      btns.forEach(btn => btn.classList.remove('active'));
+      
+      const activeIdx = { about: 0, vision: 1, director: 2, principal: 3 }[type];
+      if (btns[activeIdx]) btns[activeIdx].classList.add('active');
+
+      document.getElementById('tabContentBody').innerText = tabTexts[type] || '';
+    }
+
+    // Load admin saved changes from LocalStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedData = localStorage.getItem('bps_school_data');
+      if (savedData) {
+        const data = JSON.parse(savedData);
+
+        if (data.schoolName) {
+          document.getElementById('displaySchoolName').innerText = data.schoolName;
+          document.getElementById('siteTitle').innerText = data.schoolName;
+        }
+        if (data.topWelcomeMsg) document.getElementById('displayTopWelcome').innerText = data.topWelcomeMsg;
+        if (data.phoneNo) document.getElementById('displayPhone').innerText = '📞 +91 ' + data.phoneNo;
+        if (data.emailAddr) document.getElementById('displayEmail').innerText = '✉️ ' + data.emailAddr;
+        
+        if (data.bannerUrl) document.getElementById('mainBannerImg').src = parseDriveUrl(data.bannerUrl);
+        if (data.bannerTitle) document.getElementById('displayBannerTitle').innerText = data.bannerTitle;
+        if (data.bannerSubtitle) document.getElementById('displayBannerSubtitle').innerText = data.bannerSubtitle;
+
+        if (data.newsText) document.getElementById('displayNews').innerText = data.newsText;
+        if (data.helplineInfo) document.getElementById('displayHelpline').innerText = data.helplineInfo;
+
+        if (data.aboutSchool) tabTexts.about = data.aboutSchool;
+        if (data.visionMission) tabTexts.vision = data.visionMission;
+        if (data.directorDesk) tabTexts.director = data.directorDesk;
+        if (data.principalDesk) tabTexts.principal = data.principalDesk;
+
+        if (data.top1Name) document.getElementById('displayTop1Name').innerText = data.top1Name;
+        if (data.top1Score) document.getElementById('displayTop1Score').innerText = data.top1Score;
+        if (data.top2Name) document.getElementById('displayTop2Name').innerText = data.top2Name;
+        if (data.top2Score) document.getElementById('displayTop2Score').innerText = data.top2Score;
+
+        if (data.parentsSpeak) document.getElementById('displayParentsSpeak').innerText = data.parentsSpeak;
+        if (data.facilities) document.getElementById('displayFacilities').innerText = data.facilities;
+        
+        switchTab('about');
+      }
+    });
   </script>
 </body>
 </html>
