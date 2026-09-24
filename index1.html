@@ -313,13 +313,16 @@
 
     // Robust Google Drive Image Link Parser
     function parseDriveUrl(url) {
-      if (!url) return '';
-      const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
-      if (match && match[1]) {
-        return 'https://lh3.googleusercontent.com/d/' + match[1];
-      }
-      return url;
-    }
+  if (!url) return '';
+  // Drive Link se File ID extract karna
+  const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+  if (match && match[1]) {
+    // Ye Google Drive High-Res Thumbnail Proxy URL hai jo Desktop par block nahi hoti
+    return 'https://drive.google.com/thumbnail?sz=w1600&id=' + match[1];
+  }
+  return url;
+}
+
 
     function switchTab(type) {
       const btns = document.querySelectorAll('.tab-btn');
